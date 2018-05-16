@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.scheduler.InvestorTransMapperScheduler" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.InvestorTrans" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="zl_fund_seqId" property="zlFundSeqid" jdbcType="VARCHAR" />
+    <result column="batch_code" property="batchCode" jdbcType="INTEGER" />
+    <result column="investor_id" property="investorId" jdbcType="CHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="trans_time" property="transTime" jdbcType="TIMESTAMP" />
+    <result column="confirm_date" property="confirmDate" jdbcType="DATE" />
+    <result column="trans_state" property="transState" jdbcType="CHAR" />
+    <result column="is_excess" property="isExcess" jdbcType="CHAR" />
+    <result column="app_sheet_serial_no" property="appSheetSerialNo" jdbcType="CHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="child_product_no" property="childProductNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="trans_type" property="transType" jdbcType="CHAR" />
+    <result column="trans_vol" property="transVol" jdbcType="DECIMAL" />
+    <result column="trans_amount" property="transAmount" jdbcType="DECIMAL" />
+    <result column="product_vol" property="productVol" jdbcType="DECIMAL" />
+    <result column="trans_fix" property="transFix" jdbcType="DECIMAL" />
+    <result column="take_income_flag" property="takeIncomeFlag" jdbcType="VARCHAR" />
+    <result column="huge_subs_flag" property="hugeSubsFlag" jdbcType="CHAR" />
+    <result column="huge_redem_flag" property="hugeRedemFlag" jdbcType="CHAR" />
+    <result column="risk_disclosure" property="riskDisclosure" jdbcType="CHAR" />
+    <result column="trans_bank_code" property="transBankCode" jdbcType="VARCHAR" />
+    <result column="trans_bank_act" property="transBankAct" jdbcType="CHAR" />
+    <result column="charge_type" property="chargeType" jdbcType="CHAR" />
+    <result column="charge_way" property="chargeWay" jdbcType="CHAR" />
+    <result column="charge_rate" property="chargeRate" jdbcType="DECIMAL" />
+    <result column="specify_fee" property="specifyFee" jdbcType="DECIMAL" />
+    <result column="rolling_flag" property="rollingFlag" jdbcType="CHAR" />
+    <result column="force_redem_reason" property="forceRedemReason" jdbcType="CHAR" />
+    <result column="force_redem_type" property="forceRedemType" jdbcType="CHAR" />
+    <result column="redeem_flag" property="redeemFlag" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serial_number, zl_fund_seqId, batch_code, investor_id, chn_id, chn_code, name, 
+    trans_time, confirm_date, trans_state, is_excess, app_sheet_serial_no, product_no, 
+    child_product_no, product_name, trans_type, trans_vol, trans_amount, product_vol, 
+    trans_fix, take_income_flag, huge_subs_flag, huge_redem_flag, risk_disclosure, trans_bank_code, 
+    trans_bank_act, charge_type, charge_way, charge_rate, specify_fee, rolling_flag, 
+    force_redem_reason, force_redem_type, redeem_flag, create_time, update_time
+  </sql>
+  <select id="selectBatchTransList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from investor_trans
+    where batch_code = #{batchCode}
+  </select>
+
+</mapper>

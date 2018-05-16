@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.UserMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="zl_user_id" property="zlUserId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="user_flag" property="userFlag" jdbcType="CHAR" />
+    <result column="id_type" property="idType" jdbcType="CHAR" />
+    <result column="id_no" property="idNo" jdbcType="CHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="open_bank" property="openBank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="risk_level" property="riskLevel" jdbcType="CHAR" />
+    <result column="inst_repr_id_name" property="instReprIdName" jdbcType="VARCHAR" />
+    <result column="inst_repr_id_type" property="instReprIdType" jdbcType="CHAR" />
+    <result column="inst_repr_id_no" property="instReprIdNo" jdbcType="VARCHAR" />
+    <result column="inst_repr_expdate" property="instReprExpdate" jdbcType="DATE" />
+    <result column="inst_repr_phone" property="instReprPhone" jdbcType="VARCHAR" />
+    <result column="bank_province_code" property="bankProvinceCode" jdbcType="VARCHAR" />
+    <result column="bank_region_code" property="bankRegionCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="trans_date" property="transDate" jdbcType="VARCHAR" />
+    <result column="trans_time" property="transTime" jdbcType="VARCHAR" />
+    <result column="bus_code" property="busCode" jdbcType="VARCHAR" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chn_code, apply_no,chn_id, zl_user_id, name, user_flag, id_type, id_no, sex, phone, address,
+    open_bank, bank_account, risk_level, inst_repr_id_name, inst_repr_id_type, inst_repr_id_no, 
+    inst_repr_expdate, inst_repr_phone, bank_province_code, bank_region_code, create_time
+  </sql>
+  <select id="selectConfirmUserList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select u.user_flag,e.apply_no,
+       case when u.id_type = '00' then '0' when u.id_type = '01' then '1' when u.id_type = '02' then '2' when u.id_type = '04' then '3' when u.id_type = '10' then '4' when u.id_type = '11' then '5' when u.id_type = '19' then '6' else '7' end as id_type,
+       u.id_no,u.phone,e.name,DATE_FORMAT(e.apply_date,"%Y%m%d") as trans_date,
+       DATE_FORMAT(e.apply_time,"%H%i%s") as trans_time,e.chn_id,e.chn_code,'001' as bus_code,u.zl_user_id
+     from exchange_open e
+     left join user u on e.apply_no = u.apply_no
+    where e.chn_code = #{chnCode}
+    and (concat(DATE_FORMAT(e.apply_date,'%Y%m%d'),DATE_FORMAT(e.apply_time,'%H%i%s')) &gt; concat(#{preDate},'150000'))
+    and (concat(DATE_FORMAT(e.apply_date,'%Y%m%d'),DATE_FORMAT(e.apply_time,'%H%i%s')) &lt;= concat(#{applyDate},'150000'))
+  </select>
+
+  <update id="updateInvestorId">
+    update user set investor_id = #{investorId} where apply_no = #{applyNo}
+  </update>
+
+</mapper>

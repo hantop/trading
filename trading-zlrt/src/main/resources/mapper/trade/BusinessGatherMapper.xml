@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.BusinessGatherMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.BusinessGather" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="batch_code" property="batchCode" jdbcType="INTEGER" />
+    <result column="gather_date" property="gatherDate" jdbcType="DATE" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="CHAR" />
+    <result column="trans_type" property="transType" jdbcType="CHAR" />
+    <result column="trans_num" property="transNum" jdbcType="INTEGER" />
+    <result column="trans_vol" property="transVol" jdbcType="DECIMAL" />
+    <result column="trans_amount" property="transAmount" jdbcType="DECIMAL" />
+    <result column="success_vol" property="successVol" jdbcType="DECIMAL" />
+    <result column="fail_vol" property="failVol" jdbcType="DECIMAL" />
+    <result column="success_amount" property="successAmount" jdbcType="DECIMAL" />
+    <result column="fail_amount" property="failAmount" jdbcType="DECIMAL" />
+    <result column="success_num" property="successNum" jdbcType="INTEGER" />
+    <result column="fail_num" property="failNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, batch_code, gather_date, product_no, product_name, chn_code,
+    trans_type, trans_num, trans_vol, trans_amount, success_vol, fail_vol, success_amount, 
+    fail_amount, success_num, fail_num
+  </sql>
+  <delete id="delete">
+    delete from business_gather where 1=1
+  </delete>
+
+  <insert id="saveBatch" parameterType="list"  useGeneratedKeys="true">
+    insert into business_gather(batch_code,gather_date,product_no,product_name,chn_code,trans_type,
+    trans_num,trans_vol,trans_amount,success_vol,fail_vol,success_amount,fail_amount,success_num,fail_num) values
+    <foreach item="item" collection="bussGatherList" separator=",">
+      (#{item.batchCode},#{item.gatherDate},#{item.productNo},#{item.productName},#{item.chnCode},
+      #{item.transType},#{item.transNum},#{item.transVol},#{item.transAmount},#{item.successVol},
+      #{item.failVol},#{item.successAmount},#{item.failAmount},#{item.successNum},#{item.failNum})
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.api.mapper.trade.UserDao" >
+  <resultMap id="BaseResultMap" type="com.jinhui.api.entity.po.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="apply_time" property="applyTime" jdbcType="TIME" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="zl_user_id" property="zlUserId" jdbcType="VARCHAR" />
+    <result column="investor_id" property="investorId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="user_flag" property="userFlag" jdbcType="CHAR" />
+    <result column="id_type" property="idType" jdbcType="CHAR" />
+    <result column="id_no" property="idNo" jdbcType="CHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="open_bank" property="openBank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="risk_level" property="riskLevel" jdbcType="CHAR" />
+    <result column="inst_repr_id_name" property="instReprIdName" jdbcType="VARCHAR" />
+    <result column="inst_repr_id_type" property="instReprIdType" jdbcType="CHAR" />
+    <result column="inst_repr_id_no" property="instReprIdNo" jdbcType="VARCHAR" />
+    <result column="inst_repr_expdate" property="instReprExpdate" jdbcType="DATE" />
+    <result column="inst_repr_phone" property="instReprPhone" jdbcType="VARCHAR" />
+    <result column="bank_province_code" property="bankProvinceCode" jdbcType="VARCHAR" />
+    <result column="bank_region_code" property="bankRegionCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, apply_date, apply_time, apply_no, chn_code, chn_id, zl_user_id, investor_id, 
+    name, user_flag, id_type, id_no, sex, phone, address, open_bank, bank_account, risk_level, 
+    inst_repr_id_name, inst_repr_id_type, inst_repr_id_no, inst_repr_expdate, inst_repr_phone, 
+    bank_province_code, bank_region_code, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.api.entity.po.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into user (id, apply_date, apply_time, 
+      apply_no, chn_code, chn_id, 
+      zl_user_id, investor_id, name, 
+      user_flag, id_type, id_no, sex, 
+      phone, address, open_bank, 
+      bank_account, risk_level, inst_repr_id_name, 
+      inst_repr_id_type, inst_repr_id_no, inst_repr_expdate, 
+      inst_repr_phone, bank_province_code, bank_region_code, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{applyDate,jdbcType=DATE}, #{applyTime,jdbcType=TIME}, 
+      #{applyNo,jdbcType=VARCHAR}, #{chnCode,jdbcType=VARCHAR}, #{chnId,jdbcType=CHAR}, 
+      #{zlUserId,jdbcType=VARCHAR}, #{investorId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{userFlag,jdbcType=CHAR}, #{idType,jdbcType=CHAR}, #{idNo,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, 
+      #{phone,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{openBank,jdbcType=VARCHAR}, 
+      #{bankAccount,jdbcType=VARCHAR}, #{riskLevel,jdbcType=CHAR}, #{instReprIdName,jdbcType=VARCHAR}, 
+      #{instReprIdType,jdbcType=CHAR}, #{instReprIdNo,jdbcType=VARCHAR}, #{instReprExpdate,jdbcType=DATE}, 
+      #{instReprPhone,jdbcType=VARCHAR}, #{bankProvinceCode,jdbcType=VARCHAR}, #{bankRegionCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.api.entity.po.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="applyDate != null" >
+        apply_date,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="applyNo != null" >
+        apply_no,
+      </if>
+      <if test="chnCode != null" >
+        chn_code,
+      </if>
+      <if test="chnId != null" >
+        chn_id,
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id,
+      </if>
+      <if test="investorId != null" >
+        investor_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="userFlag != null" >
+        user_flag,
+      </if>
+      <if test="idType != null" >
+        id_type,
+      </if>
+      <if test="idNo != null" >
+        id_no,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="openBank != null" >
+        open_bank,
+      </if>
+      <if test="bankAccount != null" >
+        bank_account,
+      </if>
+      <if test="riskLevel != null" >
+        risk_level,
+      </if>
+      <if test="instReprIdName != null" >
+        inst_repr_id_name,
+      </if>
+      <if test="instReprIdType != null" >
+        inst_repr_id_type,
+      </if>
+      <if test="instReprIdNo != null" >
+        inst_repr_id_no,
+      </if>
+      <if test="instReprExpdate != null" >
+        inst_repr_expdate,
+      </if>
+      <if test="instReprPhone != null" >
+        inst_repr_phone,
+      </if>
+      <if test="bankProvinceCode != null" >
+        bank_province_code,
+      </if>
+      <if test="bankRegionCode != null" >
+        bank_region_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIME},
+      </if>
+      <if test="applyNo != null" >
+        #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chnCode != null" >
+        #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="zlUserId != null" >
+        #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="investorId != null" >
+        #{investorId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userFlag != null" >
+        #{userFlag,jdbcType=CHAR},
+      </if>
+      <if test="idType != null" >
+        #{idType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null" >
+        #{idNo,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null" >
+        #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskLevel != null" >
+        #{riskLevel,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdName != null" >
+        #{instReprIdName,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprIdType != null" >
+        #{instReprIdType,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdNo != null" >
+        #{instReprIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprExpdate != null" >
+        #{instReprExpdate,jdbcType=DATE},
+      </if>
+      <if test="instReprPhone != null" >
+        #{instReprPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bankProvinceCode != null" >
+        #{bankProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankRegionCode != null" >
+        #{bankRegionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.api.entity.po.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update user
+    <set >
+      <if test="applyDate != null" >
+        apply_date = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIME},
+      </if>
+      <if test="applyNo != null" >
+        apply_no = #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chnCode != null" >
+        chn_code = #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        chn_id = #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="investorId != null" >
+        investor_id = #{investorId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userFlag != null" >
+        user_flag = #{userFlag,jdbcType=CHAR},
+      </if>
+      <if test="idType != null" >
+        id_type = #{idType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null" >
+        id_no = #{idNo,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null" >
+        open_bank = #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskLevel != null" >
+        risk_level = #{riskLevel,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdName != null" >
+        inst_repr_id_name = #{instReprIdName,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprIdType != null" >
+        inst_repr_id_type = #{instReprIdType,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdNo != null" >
+        inst_repr_id_no = #{instReprIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprExpdate != null" >
+        inst_repr_expdate = #{instReprExpdate,jdbcType=DATE},
+      </if>
+      <if test="instReprPhone != null" >
+        inst_repr_phone = #{instReprPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bankProvinceCode != null" >
+        bank_province_code = #{bankProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankRegionCode != null" >
+        bank_region_code = #{bankRegionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.api.entity.po.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update user
+    set apply_date = #{applyDate,jdbcType=DATE},
+      apply_time = #{applyTime,jdbcType=TIME},
+      apply_no = #{applyNo,jdbcType=VARCHAR},
+      chn_code = #{chnCode,jdbcType=VARCHAR},
+      chn_id = #{chnId,jdbcType=CHAR},
+      zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      investor_id = #{investorId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      user_flag = #{userFlag,jdbcType=CHAR},
+      id_type = #{idType,jdbcType=CHAR},
+      id_no = #{idNo,jdbcType=CHAR},
+      sex = #{sex,jdbcType=CHAR},
+      phone = #{phone,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      open_bank = #{openBank,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      risk_level = #{riskLevel,jdbcType=CHAR},
+      inst_repr_id_name = #{instReprIdName,jdbcType=VARCHAR},
+      inst_repr_id_type = #{instReprIdType,jdbcType=CHAR},
+      inst_repr_id_no = #{instReprIdNo,jdbcType=VARCHAR},
+      inst_repr_expdate = #{instReprExpdate,jdbcType=DATE},
+      inst_repr_phone = #{instReprPhone,jdbcType=VARCHAR},
+      bank_province_code = #{bankProvinceCode,jdbcType=VARCHAR},
+      bank_region_code = #{bankRegionCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByChnId" resultMap="BaseResultMap" >
+
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where chn_id = #{chnId}
+  </select>
+
+
+
+  <update id="updatePhoneByChnId">
+    update user set phone = #{phone,jdbcType=CHAR}
+    where chn_id = #{chnId}
+    and phone = #{originPhone,jdbcType=CHAR}
+  </update>
+
+
+  <select id="selectByChnCodeAndIDNo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user where  id_no = #{idNo,jdbcType=CHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectZlrtUserIdByChnId" resultType="java.lang.String">
+    select
+    zl_user_id
+    from user
+    where chn_id = #{chnId}
+  </select>
+
+</mapper>

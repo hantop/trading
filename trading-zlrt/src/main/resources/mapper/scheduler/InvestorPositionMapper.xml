@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.scheduler.InvestorPositionMapperScheduler" >
+  <resultMap id="positionMap" type="com.jinhui.zlrt.entity.domain.InvestorPosition" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gather_date" property="gatherDate" jdbcType="DATE" />
+    <result column="batch_code" property="batchCode" jdbcType="INTEGER" />
+    <result column="investor_id" property="investorId" jdbcType="CHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="child_product_no" property="childProductNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="total_postion_vol" property="totalPostionVol" jdbcType="DECIMAL" />
+    <result column="product_vol" property="productVol" jdbcType="DECIMAL" />
+    <result column="total_postion_amount" property="totalPostionAmount" jdbcType="DECIMAL" />
+    <result column="total_income" property="totalIncome" jdbcType="DECIMAL" />
+    <result column="total_redemed_amount" property="totalRedemedAmount" jdbcType="DECIMAL" />
+    <result column="total_subs_amount" property="totalSubsAmount" jdbcType="DECIMAL" />
+    <result column="rolling_flag" property="rollingFlag" jdbcType="CHAR" />
+    <result column="rolling_vol" property="rollingVol" jdbcType="DECIMAL" />
+    <result column="position_type" property="positionType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gather_date, batch_code,investor_id, chn_id, chn_code, name, child_product_no, product_no, product_name, total_postion_vol,
+    product_vol, total_postion_amount, total_income, total_redemed_amount, total_subs_amount, position_type,
+    rolling_flag, rolling_vol
+  </sql>
+  <select id="selectAllPosition" resultMap="positionMap">
+    select
+    <include refid="Base_Column_List" />
+    from investor_position
+  </select>
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.scheduler.ChnOpenMapperScheduler" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.ChnOpen" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="batch_code" property="batchCode" jdbcType="INTEGER" />
+    <result column="zl_user_id" property="zlUserId" jdbcType="VARCHAR" />
+    <result column="investor_id" property="investorId" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="VARCHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="app_sheet_serial_no" property="appSheetSerialNo" jdbcType="VARCHAR" />
+    <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
+    <result column="confirm_date" property="confirmDate" jdbcType="DATE" />
+    <result column="open_state" property="openState" jdbcType="VARCHAR" />
+    <result column="user_flag" property="userFlag" jdbcType="CHAR" />
+    <result column="id_type" property="idType" jdbcType="CHAR" />
+    <result column="id_no" property="idNo" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="zipcode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="open_bank" property="openBank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="CHAR" />
+    <result column="education" property="education" jdbcType="CHAR" />
+    <result column="annual_income" property="annualIncome" jdbcType="DECIMAL" />
+    <result column="risk_level" property="riskLevel" jdbcType="CHAR" />
+    <result column="inst_repr_id_name" property="instReprIdName" jdbcType="VARCHAR" />
+    <result column="inst_repr_id_type" property="instReprIdType" jdbcType="CHAR" />
+    <result column="inst_repr_id_no" property="instReprIdNo" jdbcType="VARCHAR" />
+    <result column="inst_repr_expdate" property="instReprExpdate" jdbcType="DATE" />
+    <result column="inst_repr_phone" property="instReprPhone" jdbcType="VARCHAR" />
+    <result column="inst_repr_manage_range" property="instReprManageRange" jdbcType="VARCHAR" />
+    <result column="controlholder_name" property="controlholderName" jdbcType="VARCHAR" />
+    <result column="controlholder_id_type" property="controlholderIdType" jdbcType="CHAR" />
+    <result column="controlholder_id_no" property="controlholderIdNo" jdbcType="VARCHAR" />
+    <result column="controlholder_expdate" property="controlholderExpdate" jdbcType="DATE" />
+    <result column="vocation" property="vocation" jdbcType="VARCHAR" />
+    <result column="corpoProperty" property="corpoproperty" jdbcType="CHAR" />
+    <result column="staff_num" property="staffNum" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="DECIMAL" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_id_type" property="contactIdType" jdbcType="CHAR" />
+    <result column="contact_id_no" property="contactIdNo" jdbcType="VARCHAR" />
+    <result column="contact_expdate" property="contactExpdate" jdbcType="DATE" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serial_number, batch_code, zl_user_id, investor_id, chn_id, chn_code, name, app_sheet_serial_no, 
+    apply_date, confirm_date, open_state, user_flag, id_type, id_no, sex, phone, address, 
+    zipcode, email, fax, open_bank, bank_account, profession, education, annual_income, 
+    risk_level, inst_repr_id_name, inst_repr_id_type, inst_repr_id_no, inst_repr_expdate, 
+    inst_repr_phone, inst_repr_manage_range, controlholder_name, controlholder_id_type, 
+    controlholder_id_no, controlholder_expdate, vocation, corpoProperty, staff_num, province, 
+    city, county, registered_capital, contact_name, contact_id_type, contact_id_no, contact_expdate, 
+    contact_phone, create_time, update_time
+  </sql>
+  <select id="selectOpenSuccessList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from chn_open
+    where open_state = '0000' and batch_code = #{batchCode}
+  </select>
+
+</mapper>

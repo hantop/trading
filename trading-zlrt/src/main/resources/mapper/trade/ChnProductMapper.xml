@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinhui.zlrt.mapper.trade.ChnProductMapperTrade">
+  <resultMap id="chnProductMap" type="com.jinhui.zlrt.entity.domain.ChnProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="chn_code" jdbcType="CHAR" property="chnCode" />
+    <result column="product_name" jdbcType="CHAR" property="productName" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="income_rate" jdbcType="DECIMAL" property="incomeRate" />
+    <result column="percent_income_rate" property="percentIncomeRate" jdbcType="DECIMAL" />
+    <result column="client_subs_toplimit" property="subsToplimit" jdbcType="DECIMAL" />
+    <result column="client_redeem_toplimit" property="redeemToplimit" jdbcType="DECIMAL" />
+    <result column="client_position_limit" property="positionLimit" jdbcType="DECIMAL" />
+    <result column="product_subs_toplimit" jdbcType="DECIMAL" property="productSubsToplimit" />
+    <result column="product_redeem_toplimit" jdbcType="DECIMAL" property="productRedeemToplimit" />
+    <result column="total_limit" jdbcType="DECIMAL" property="totalLimit" />
+    <result column="purchase_limit" jdbcType="DECIMAL" property="purchaseLimit" />
+    <result column="sale_time" jdbcType="DATE" property="saleTime" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chn_code, product_name, product_no, income_rate, percent_income_rate, client_subs_toplimit,
+    client_redeem_toplimit, client_position_limit, product_subs_toplimit, product_redeem_toplimit,
+    total_limit, purchase_limit, sale_time, create_date
+  </sql>
+
+  <!--查询产品 -->
+  <select id="selectChnProduct" resultMap="chnProductMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from chn_product where product_no = #{productNo}
+  </select>
+
+  <insert id="insertChnProduct" parameterType="com.jinhui.zlrt.entity.domain.ChnProduct">
+    insert into chn_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chnCode != null" >
+        chn_code,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productNo != null" >
+        product_no,
+      </if>
+      <if test="incomeRate != null" >
+        income_rate,
+      </if>
+      <if test="percentIncomeRate != null" >
+        percent_income_rate,
+      </if>
+      <if test="subsToplimit != null" >
+        client_subs_toplimit,
+      </if>
+      <if test="redeemToplimit != null" >
+        client_redeem_toplimit,
+      </if>
+      <if test="positionLimit != null" >
+        client_position_limit,
+      </if>
+      <if test="productSubsToplimit != null" >
+        product_subs_toplimit,
+      </if>
+      <if test="productRedeemToplimit != null" >
+        product_redeem_toplimit,
+      </if>
+      <if test="totalLimit != null" >
+        total_limit,
+      </if>
+      <if test="purchaseLimit != null" >
+        purchase_limit,
+      </if>
+      <if test="saleTime != null" >
+        sale_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chnCode != null" >
+        #{chnCode,jdbcType=CHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeRate != null" >
+        #{incomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="percentIncomeRate != null" >
+        #{percentIncomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="subsToplimit != null" >
+        #{subsToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="redeemToplimit != null" >
+        #{redeemToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="positionLimit != null" >
+        #{positionLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productSubsToplimit != null" >
+        #{productSubsToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productRedeemToplimit != null" >
+        #{productRedeemToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLimit != null" >
+        #{totalLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="purchaseLimit != null" >
+        #{purchaseLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="saleTime != null" >
+        #{saleTime,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateChnProduct" parameterType="com.jinhui.zlrt.entity.domain.ChnProduct">
+    update chn_product
+    <set >
+      <if test="incomeRate != null" >
+        income_rate = #{incomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="percentIncomeRate != null" >
+        percent_income_rate = #{percentIncomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="subsToplimit != null" >
+        client_subs_toplimit = #{subsToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="redeemToplimit != null" >
+        client_redeem_toplimit = #{redeemToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="positionLimit != null" >
+        client_position_limit = #{positionLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productSubsToplimit != null" >
+        product_subs_toplimit = #{productSubsToplimit,jdbcType=DECIMAL},
+      </if>
+      <if test="productRedeemToplimit != null" >
+        product_redeem_toplimit = #{productRedeemToplimit,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where product_no = #{productNo}
+  </update>
+
+</mapper>

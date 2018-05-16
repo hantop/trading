@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.ExchangeInfoMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.ExchangeInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zl_instu_id" property="zlInstuId" jdbcType="VARCHAR" />
+    <result column="exchange_code" property="exchangeCode" jdbcType="CHAR" />
+    <result column="exchange_name" property="exchangeName" jdbcType="VARCHAR" />
+    <result column="id_type" property="idType" jdbcType="CHAR" />
+    <result column="id_no" property="idNo" jdbcType="CHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="artificial" property="artificial" jdbcType="VARCHAR" />
+    <result column="adress" property="adress" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="current_product_limit" property="currentProductLimit" jdbcType="DECIMAL" />
+  </resultMap>
+  <delete id="delete">
+    delete from exchange_info
+  </delete>
+
+  <insert id="saveBatch" parameterType="list"  useGeneratedKeys="true">
+    insert into exchange_info(zl_instu_id,exchange_code,exchange_name,id_type,id_no,contacts,artificial,adress,phone,current_product_limit) values
+    <foreach item="item" collection="exchangeInfoList" separator=",">
+      (#{item.zlInstuId},#{item.exchangeCode},#{item.exchangeName},#{item.idType},#{item.idNo},
+      #{item.contacts},#{item.artificial},#{item.adress},#{item.phone},#{item.currentProductLimit})
+    </foreach>
+  </insert>
+</mapper>

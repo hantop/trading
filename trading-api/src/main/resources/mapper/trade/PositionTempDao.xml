@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.api.mapper.trade.PositionTempDao" >
+  <resultMap id="BaseResultMap" type="com.jinhui.api.entity.po.PositionTemp" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gather_date" property="gatherDate" jdbcType="DATE" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="total_postion_vol" property="totalPostionVol" jdbcType="DECIMAL" />
+    <result column="product_vol" property="productVol" jdbcType="DECIMAL" />
+    <result column="total_postion_amount" property="totalPostionAmount" jdbcType="DECIMAL" />
+    <result column="total_income" property="totalIncome" jdbcType="DECIMAL" />
+    <result column="total_redemed_amount" property="totalRedemedAmount" jdbcType="DECIMAL" />
+    <result column="total_subs_amount" property="totalSubsAmount" jdbcType="DECIMAL" />
+    <result column="rolling_vol" property="rollingVol" jdbcType="DECIMAL" />
+    <result column="rolling_flag" property="rollingFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, gather_date, chn_id, chn_code, name, product_no, product_name, total_postion_vol, 
+    product_vol, total_postion_amount, total_income, total_redemed_amount, total_subs_amount, 
+    rolling_vol, rolling_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from position_temp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from position_temp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.jinhui.api.entity.po.PositionTemp" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into position_temp (id, gather_date, chn_id, 
+      chn_code, name, product_no, 
+      product_name, total_postion_vol, product_vol, 
+      total_postion_amount, total_income, total_redemed_amount, 
+      total_subs_amount, rolling_vol, rolling_flag
+      )
+    values (#{id,jdbcType=INTEGER}, #{gatherDate,jdbcType=DATE}, #{chnId,jdbcType=CHAR}, 
+      #{chnCode,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{productNo,jdbcType=CHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{totalPostionVol,jdbcType=DECIMAL}, #{productVol,jdbcType=DECIMAL}, 
+      #{totalPostionAmount,jdbcType=DECIMAL}, #{totalIncome,jdbcType=DECIMAL}, #{totalRedemedAmount,jdbcType=DECIMAL}, 
+      #{totalSubsAmount,jdbcType=DECIMAL}, #{rollingVol,jdbcType=DECIMAL}, #{rollingFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.api.entity.po.PositionTemp" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into position_temp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gatherDate != null" >
+        gather_date,
+      </if>
+      <if test="chnId != null" >
+        chn_id,
+      </if>
+      <if test="chnCode != null" >
+        chn_code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="productNo != null" >
+        product_no,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="totalPostionVol != null" >
+        total_postion_vol,
+      </if>
+      <if test="productVol != null" >
+        product_vol,
+      </if>
+      <if test="totalPostionAmount != null" >
+        total_postion_amount,
+      </if>
+      <if test="totalIncome != null" >
+        total_income,
+      </if>
+      <if test="totalRedemedAmount != null" >
+        total_redemed_amount,
+      </if>
+      <if test="totalSubsAmount != null" >
+        total_subs_amount,
+      </if>
+      <if test="rollingVol != null" >
+        rolling_vol,
+      </if>
+      <if test="rollingFlag != null" >
+        rolling_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gatherDate != null" >
+        #{gatherDate,jdbcType=DATE},
+      </if>
+      <if test="chnId != null" >
+        #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        #{chnCode,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        #{productNo,jdbcType=CHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPostionVol != null" >
+        #{totalPostionVol,jdbcType=DECIMAL},
+      </if>
+      <if test="productVol != null" >
+        #{productVol,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPostionAmount != null" >
+        #{totalPostionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalIncome != null" >
+        #{totalIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="totalRedemedAmount != null" >
+        #{totalRedemedAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSubsAmount != null" >
+        #{totalSubsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="rollingVol != null" >
+        #{rollingVol,jdbcType=DECIMAL},
+      </if>
+      <if test="rollingFlag != null" >
+        #{rollingFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.api.entity.po.PositionTemp" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update position_temp
+    <set >
+      <if test="gatherDate != null" >
+        gather_date = #{gatherDate,jdbcType=DATE},
+      </if>
+      <if test="chnId != null" >
+        chn_id = #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        chn_code = #{chnCode,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        product_no = #{productNo,jdbcType=CHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPostionVol != null" >
+        total_postion_vol = #{totalPostionVol,jdbcType=DECIMAL},
+      </if>
+      <if test="productVol != null" >
+        product_vol = #{productVol,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPostionAmount != null" >
+        total_postion_amount = #{totalPostionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalIncome != null" >
+        total_income = #{totalIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="totalRedemedAmount != null" >
+        total_redemed_amount = #{totalRedemedAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSubsAmount != null" >
+        total_subs_amount = #{totalSubsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="rollingVol != null" >
+        rolling_vol = #{rollingVol,jdbcType=DECIMAL},
+      </if>
+      <if test="rollingFlag != null" >
+        rolling_flag = #{rollingFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.api.entity.po.PositionTemp" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update position_temp
+    set gather_date = #{gatherDate,jdbcType=DATE},
+      chn_id = #{chnId,jdbcType=CHAR},
+      chn_code = #{chnCode,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      product_no = #{productNo,jdbcType=CHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      total_postion_vol = #{totalPostionVol,jdbcType=DECIMAL},
+      product_vol = #{productVol,jdbcType=DECIMAL},
+      total_postion_amount = #{totalPostionAmount,jdbcType=DECIMAL},
+      total_income = #{totalIncome,jdbcType=DECIMAL},
+      total_redemed_amount = #{totalRedemedAmount,jdbcType=DECIMAL},
+      total_subs_amount = #{totalSubsAmount,jdbcType=DECIMAL},
+      rolling_vol = #{rollingVol,jdbcType=DECIMAL},
+      rolling_flag = #{rollingFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from position_temp
+  </select>
+
+</mapper>

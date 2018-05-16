@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.TradeFundTransferMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.TradeFundTransfer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="apply_time" property="applyTime" jdbcType="TIME" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+    <result column="transfer_no" property="transferNo" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="buss_code" property="bussCode" jdbcType="VARCHAR" />
+    <result column="trans_vol" property="transVol" jdbcType="DECIMAL" />
+    <result column="trans_amount" property="transAmount" jdbcType="DECIMAL" />
+    <result column="benefit_amount" property="benefitAmount" jdbcType="DECIMAL" />
+    <result column="pay_amount" property="payAmount" jdbcType="DECIMAL" />
+    <result column="pay_flag" property="payFlag" jdbcType="CHAR" />
+    <result column="pay_way" property="payWay" jdbcType="CHAR" />
+    <result column="pay_status" property="payStatus" jdbcType="CHAR" />
+    <result column="trans_bank_code" property="transBankCode" jdbcType="VARCHAR" />
+    <result column="trans_bank_act" property="transBankAct" jdbcType="CHAR" />
+    <result column="trans_fix" property="transFix" jdbcType="DECIMAL" />
+    <result column="charge_type" property="chargeType" jdbcType="CHAR" />
+    <result column="charge_way" property="chargeWay" jdbcType="CHAR" />
+    <result column="charge_rate" property="chargeRate" jdbcType="DECIMAL" />
+    <result column="specify_fee" property="specifyFee" jdbcType="DECIMAL" />
+    <result column="zl_pnr_date" property="zlPnrDate" jdbcType="VARCHAR" />
+    <result column="zl_pnr_time" property="zlPnrTime" jdbcType="VARCHAR" />
+    <result column="zl_pnr_seqid" property="zlPnrSeqid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, apply_date, apply_time, apply_no, transfer_no, name, chn_id, chn_code, product_no, 
+    product_name, buss_code, trans_vol, trans_amount, benefit_amount, pay_amount, pay_flag, 
+    pay_way, pay_status, trans_bank_code, trans_bank_act, trans_fix, charge_type, charge_way, 
+    charge_rate, specify_fee, zl_pnr_date, zl_pnr_time, zl_pnr_seqid, create_time
+  </sql>
+
+  <update id="updateStatusToSucc">
+     update trade_fund_transfer set pay_status = 0
+    where buss_code = '024' and pay_status = '2'
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &gt; concat(#{preDate},'150000'))
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &lt;= concat(#{batchDate},'150000'))
+  </update>
+
+  <update id="updateStatusToFail">
+    update trade_fund_transfer set pay_status = 3
+    where buss_code = '024' and pay_status = '2'
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &gt; concat(#{preDate},'150000'))
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &lt;= concat(#{batchDate},'150000'))
+  </update>
+
+  <update id="syncPayStatus">
+    update trade_fund_transfer set pay_status = '3' where apply_no in (
+    select apply_no from trade_consign where buss_code = '024' and  consign_status = '2'
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &gt; concat(#{preDate},'150000'))
+    and (concat(DATE_FORMAT(apply_date,'%Y%m%d'),DATE_FORMAT(apply_time,'%H%i%s')) &lt;= concat(#{batchDate},'150000')))
+  </update>
+
+</mapper>

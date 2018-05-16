@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.api.mapper.trade.BindCardInfoDao" >
+  <resultMap id="BaseResultMap" type="com.jinhui.api.entity.po.BindCardInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="counter_no" property="counterNo" jdbcType="VARCHAR" />
+    <result column="zl_user_id" property="zlUserId" jdbcType="VARCHAR" />
+    <result column="open_bank" property="openBank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, name, chn_id, chn_code, counter_no, zl_user_id, open_bank, bank_account, province, 
+    city, mobile_no, status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from bind_card_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from bind_card_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.api.entity.po.BindCardInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into bind_card_info (id, name, chn_id, 
+      chn_code, counter_no, zl_user_id, 
+      open_bank, bank_account, province, 
+      city, mobile_no, status, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{chnId,jdbcType=CHAR}, 
+      #{chnCode,jdbcType=VARCHAR}, #{counterNo,jdbcType=VARCHAR}, #{zlUserId,jdbcType=VARCHAR}, 
+      #{openBank,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.api.entity.po.BindCardInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into bind_card_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="chnId != null" >
+        chn_id,
+      </if>
+      <if test="chnCode != null" >
+        chn_code,
+      </if>
+      <if test="counterNo != null" >
+        counter_no,
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id,
+      </if>
+      <if test="openBank != null" >
+        open_bank,
+      </if>
+      <if test="bankAccount != null" >
+        bank_account,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="counterNo != null" >
+        #{counterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUserId != null" >
+        #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null" >
+        #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.api.entity.po.BindCardInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update bind_card_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        chn_id = #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        chn_code = #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="counterNo != null" >
+        counter_no = #{counterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null" >
+        open_bank = #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.api.entity.po.BindCardInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update bind_card_info
+    set name = #{name,jdbcType=VARCHAR},
+      chn_id = #{chnId,jdbcType=CHAR},
+      chn_code = #{chnCode,jdbcType=VARCHAR},
+      counter_no = #{counterNo,jdbcType=VARCHAR},
+      zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      open_bank = #{openBank,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      mobile_no = #{mobileNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByParam" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from bind_card_info
+    where open_bank = #{openBank,jdbcType=VARCHAR}
+    and bank_account = #{bankAccount,jdbcType=VARCHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+    and status = #{status,jdbcType=CHAR}
+  </select>
+
+
+  <select id="selectCountByParam"  resultType="java.lang.Integer">
+
+    select
+    count(*)
+    from bind_card_info
+    where chn_id = #{chnId,jdbcType=VARCHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+    and status = #{status,jdbcType=CHAR}
+  </select>
+
+  <select id="selectFirstBind" resultMap="BaseResultMap">
+    select
+    count(*)
+    from bind_card_info
+    where  open_bank = #{openBank,jdbcType=VARCHAR}
+    and bank_account = #{bankAccount,jdbcType=VARCHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+  </select>
+
+    <update id="updateByParam">
+    update bind_card_info
+    set  status = #{status,jdbcType=CHAR}
+    where  open_bank = #{openBank,jdbcType=VARCHAR}
+    and bank_account = #{bankAccount,jdbcType=VARCHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectAllByChnId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from bind_card_info
+    where  chn_id = #{chnId,jdbcType=CHAR}
+    and chn_code = #{chnCode,jdbcType=VARCHAR}
+
+  </select>
+
+</mapper>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.api.mapper.trade.TestUserDao" >
+  <resultMap id="BaseResultMap" type="com.jinhui.api.entity.po.TestUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="login_id" property="loginId" jdbcType="CHAR" />
+    <result column="channel_code" property="channelCode" jdbcType="VARCHAR" />
+    <result column="channel_user_id" property="channelUserId" jdbcType="CHAR" />
+    <result column="user_name_text" property="userNameText" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="CHAR" />
+    <result column="cert_type" property="certType" jdbcType="CHAR" />
+    <result column="cert_id" property="certId" jdbcType="CHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone_no" property="phoneNo" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="bank_code" property="bankCode" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="client_risk_rate" property="clientRiskRate" jdbcType="CHAR" />
+    <result column="inst_repr_name" property="instReprName" jdbcType="VARCHAR" />
+    <result column="inst_repr_id_type" property="instReprIdType" jdbcType="CHAR" />
+    <result column="inst_repr_id_code" property="instReprIdCode" jdbcType="VARCHAR" />
+    <result column="inst_repr_cert_valid_date" property="instReprCertValidDate" jdbcType="DATE" />
+    <result column="inst_reprphone_no" property="instReprphoneNo" jdbcType="VARCHAR" />
+    <result column="bank_province_code" property="bankProvinceCode" jdbcType="VARCHAR" />
+    <result column="bank_region_code" property="bankRegionCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, login_id, channel_code, channel_user_id, user_name_text, user_type, cert_type, 
+    cert_id, sex, phone_no, address, bank_code, card_no, client_risk_rate, inst_repr_name, 
+    inst_repr_id_type, inst_repr_id_code, inst_repr_cert_valid_date, inst_reprphone_no, 
+    bank_province_code, bank_region_code, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from test_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from test_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.api.entity.po.TestUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into test_user (id, login_id, channel_code, 
+      channel_user_id, user_name_text, user_type, 
+      cert_type, cert_id, sex, phone_no, 
+      address, bank_code, card_no, 
+      client_risk_rate, inst_repr_name, inst_repr_id_type, 
+      inst_repr_id_code, inst_repr_cert_valid_date, inst_reprphone_no, 
+      bank_province_code, bank_region_code, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{loginId,jdbcType=CHAR}, #{channelCode,jdbcType=VARCHAR}, 
+      #{channelUserId,jdbcType=CHAR}, #{userNameText,jdbcType=VARCHAR}, #{userType,jdbcType=CHAR}, 
+      #{certType,jdbcType=CHAR}, #{certId,jdbcType=CHAR}, #{sex,jdbcType=CHAR}, #{phoneNo,jdbcType=CHAR}, 
+      #{address,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, 
+      #{clientRiskRate,jdbcType=CHAR}, #{instReprName,jdbcType=VARCHAR}, #{instReprIdType,jdbcType=CHAR}, 
+      #{instReprIdCode,jdbcType=VARCHAR}, #{instReprCertValidDate,jdbcType=DATE}, #{instReprphoneNo,jdbcType=VARCHAR}, 
+      #{bankProvinceCode,jdbcType=VARCHAR}, #{bankRegionCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.api.entity.po.TestUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into test_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="channelCode != null" >
+        channel_code,
+      </if>
+      <if test="channelUserId != null" >
+        channel_user_id,
+      </if>
+      <if test="userNameText != null" >
+        user_name_text,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="certType != null" >
+        cert_type,
+      </if>
+      <if test="certId != null" >
+        cert_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="phoneNo != null" >
+        phone_no,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="bankCode != null" >
+        bank_code,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="clientRiskRate != null" >
+        client_risk_rate,
+      </if>
+      <if test="instReprName != null" >
+        inst_repr_name,
+      </if>
+      <if test="instReprIdType != null" >
+        inst_repr_id_type,
+      </if>
+      <if test="instReprIdCode != null" >
+        inst_repr_id_code,
+      </if>
+      <if test="instReprCertValidDate != null" >
+        inst_repr_cert_valid_date,
+      </if>
+      <if test="instReprphoneNo != null" >
+        inst_reprphone_no,
+      </if>
+      <if test="bankProvinceCode != null" >
+        bank_province_code,
+      </if>
+      <if test="bankRegionCode != null" >
+        bank_region_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=CHAR},
+      </if>
+      <if test="channelCode != null" >
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUserId != null" >
+        #{channelUserId,jdbcType=CHAR},
+      </if>
+      <if test="userNameText != null" >
+        #{userNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="certType != null" >
+        #{certType,jdbcType=CHAR},
+      </if>
+      <if test="certId != null" >
+        #{certId,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phoneNo != null" >
+        #{phoneNo,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRiskRate != null" >
+        #{clientRiskRate,jdbcType=CHAR},
+      </if>
+      <if test="instReprName != null" >
+        #{instReprName,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprIdType != null" >
+        #{instReprIdType,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdCode != null" >
+        #{instReprIdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprCertValidDate != null" >
+        #{instReprCertValidDate,jdbcType=DATE},
+      </if>
+      <if test="instReprphoneNo != null" >
+        #{instReprphoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankProvinceCode != null" >
+        #{bankProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankRegionCode != null" >
+        #{bankRegionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.api.entity.po.TestUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update test_user
+    <set >
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=CHAR},
+      </if>
+      <if test="channelCode != null" >
+        channel_code = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUserId != null" >
+        channel_user_id = #{channelUserId,jdbcType=CHAR},
+      </if>
+      <if test="userNameText != null" >
+        user_name_text = #{userNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="certType != null" >
+        cert_type = #{certType,jdbcType=CHAR},
+      </if>
+      <if test="certId != null" >
+        cert_id = #{certId,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phoneNo != null" >
+        phone_no = #{phoneNo,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRiskRate != null" >
+        client_risk_rate = #{clientRiskRate,jdbcType=CHAR},
+      </if>
+      <if test="instReprName != null" >
+        inst_repr_name = #{instReprName,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprIdType != null" >
+        inst_repr_id_type = #{instReprIdType,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdCode != null" >
+        inst_repr_id_code = #{instReprIdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprCertValidDate != null" >
+        inst_repr_cert_valid_date = #{instReprCertValidDate,jdbcType=DATE},
+      </if>
+      <if test="instReprphoneNo != null" >
+        inst_reprphone_no = #{instReprphoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankProvinceCode != null" >
+        bank_province_code = #{bankProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankRegionCode != null" >
+        bank_region_code = #{bankRegionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.api.entity.po.TestUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update test_user
+    set login_id = #{loginId,jdbcType=CHAR},
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+      channel_user_id = #{channelUserId,jdbcType=CHAR},
+      user_name_text = #{userNameText,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=CHAR},
+      cert_type = #{certType,jdbcType=CHAR},
+      cert_id = #{certId,jdbcType=CHAR},
+      sex = #{sex,jdbcType=CHAR},
+      phone_no = #{phoneNo,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      client_risk_rate = #{clientRiskRate,jdbcType=CHAR},
+      inst_repr_name = #{instReprName,jdbcType=VARCHAR},
+      inst_repr_id_type = #{instReprIdType,jdbcType=CHAR},
+      inst_repr_id_code = #{instReprIdCode,jdbcType=VARCHAR},
+      inst_repr_cert_valid_date = #{instReprCertValidDate,jdbcType=DATE},
+      inst_reprphone_no = #{instReprphoneNo,jdbcType=VARCHAR},
+      bank_province_code = #{bankProvinceCode,jdbcType=VARCHAR},
+      bank_region_code = #{bankRegionCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateByLoginId">
+
+    update test_user
+    <set >
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=CHAR},
+      </if>
+      <if test="channelCode != null" >
+        channel_code = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelUserId != null" >
+        channel_user_id = #{channelUserId,jdbcType=CHAR},
+      </if>
+      <if test="userNameText != null" >
+        user_name_text = #{userNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="certType != null" >
+        cert_type = #{certType,jdbcType=CHAR},
+      </if>
+      <if test="certId != null" >
+        cert_id = #{certId,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phoneNo != null" >
+        phone_no = #{phoneNo,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRiskRate != null" >
+        client_risk_rate = #{clientRiskRate,jdbcType=CHAR},
+      </if>
+      <if test="instReprName != null" >
+        inst_repr_name = #{instReprName,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprIdType != null" >
+        inst_repr_id_type = #{instReprIdType,jdbcType=CHAR},
+      </if>
+      <if test="instReprIdCode != null" >
+        inst_repr_id_code = #{instReprIdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instReprCertValidDate != null" >
+        inst_repr_cert_valid_date = #{instReprCertValidDate,jdbcType=DATE},
+      </if>
+      <if test="instReprphoneNo != null" >
+        inst_reprphone_no = #{instReprphoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankProvinceCode != null" >
+        bank_province_code = #{bankProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankRegionCode != null" >
+        bank_region_code = #{bankRegionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where login_id = #{loginId}
+  </update>
+
+
+  <select id="selectByLoginId" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from test_user
+    where login_id = #{loginId}
+
+  </select>
+</mapper>

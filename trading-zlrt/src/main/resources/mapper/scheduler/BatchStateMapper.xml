@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.scheduler.BatchStateMapperScheduler" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.BatchState" >
+    <id column="batch_code" property="batchCode" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_code, date, create_time
+  </sql>
+
+  <select id="selectAllBatchStateList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from batch_state
+  </select>
+
+  <select id="selectBatchStateCurrent" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from batch_state_current
+  </select>
+</mapper>

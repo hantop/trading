@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.api.mapper.trade.BussSerialRecordDao" >
+  <resultMap id="BaseResultMap" type="com.jinhui.api.entity.po.BussSerialRecord" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="apply_time" property="applyTime" jdbcType="TIME" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+    <result column="transfer_no" property="transferNo" jdbcType="VARCHAR" />
+    <result column="zl_handel_date" property="zlHandelDate" jdbcType="DATE" />
+    <result column="zl_handle_time" property="zlHandleTime" jdbcType="TIME" />
+    <result column="zl_serial_no" property="zlSerialNo" jdbcType="VARCHAR" />
+    <result column="zl_user_id" property="zlUserId" jdbcType="VARCHAR" />
+    <result column="zl_resp_code" property="zlRespCode" jdbcType="CHAR" />
+    <result column="zl_resp_msg" property="zlRespMsg" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="buss_flag" property="bussFlag" jdbcType="CHAR" />
+    <result column="buss_status" property="bussStatus" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, apply_date, apply_time, apply_no, transfer_no, zl_handel_date, zl_handle_time, 
+    zl_serial_no, zl_user_id, zl_resp_code, zl_resp_msg, name, chn_id, chn_code, buss_flag, 
+    buss_status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from buss_serial_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from buss_serial_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.api.entity.po.BussSerialRecord" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into buss_serial_record (id, apply_date, apply_time, 
+      apply_no, transfer_no, zl_handel_date, 
+      zl_handle_time, zl_serial_no, zl_user_id, 
+      zl_resp_code, zl_resp_msg, name, 
+      chn_id, chn_code, buss_flag, 
+      buss_status, create_time)
+    values (#{id,jdbcType=INTEGER}, #{applyDate,jdbcType=DATE}, #{applyTime,jdbcType=TIME}, 
+      #{applyNo,jdbcType=VARCHAR}, #{transferNo,jdbcType=VARCHAR}, #{zlHandelDate,jdbcType=DATE}, 
+      #{zlHandleTime,jdbcType=TIME}, #{zlSerialNo,jdbcType=VARCHAR}, #{zlUserId,jdbcType=VARCHAR}, 
+      #{zlRespCode,jdbcType=CHAR}, #{zlRespMsg,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{chnId,jdbcType=CHAR}, #{chnCode,jdbcType=VARCHAR}, #{bussFlag,jdbcType=CHAR}, 
+      #{bussStatus,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.api.entity.po.BussSerialRecord" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    insert into buss_serial_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="applyDate != null" >
+        apply_date,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="applyNo != null" >
+        apply_no,
+      </if>
+      <if test="transferNo != null" >
+        transfer_no,
+      </if>
+      <if test="zlHandelDate != null" >
+        zl_handel_date,
+      </if>
+      <if test="zlHandleTime != null" >
+        zl_handle_time,
+      </if>
+      <if test="zlSerialNo != null" >
+        zl_serial_no,
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id,
+      </if>
+      <if test="zlRespCode != null" >
+        zl_resp_code,
+      </if>
+      <if test="zlRespMsg != null" >
+        zl_resp_msg,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="chnId != null" >
+        chn_id,
+      </if>
+      <if test="chnCode != null" >
+        chn_code,
+      </if>
+      <if test="bussFlag != null" >
+        buss_flag,
+      </if>
+      <if test="bussStatus != null" >
+        buss_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applyDate != null" >
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIME},
+      </if>
+      <if test="applyNo != null" >
+        #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transferNo != null" >
+        #{transferNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlHandelDate != null" >
+        #{zlHandelDate,jdbcType=DATE},
+      </if>
+      <if test="zlHandleTime != null" >
+        #{zlHandleTime,jdbcType=TIME},
+      </if>
+      <if test="zlSerialNo != null" >
+        #{zlSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUserId != null" >
+        #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="zlRespCode != null" >
+        #{zlRespCode,jdbcType=CHAR},
+      </if>
+      <if test="zlRespMsg != null" >
+        #{zlRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bussFlag != null" >
+        #{bussFlag,jdbcType=CHAR},
+      </if>
+      <if test="bussStatus != null" >
+        #{bussStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.api.entity.po.BussSerialRecord" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update buss_serial_record
+    <set >
+      <if test="applyDate != null" >
+        apply_date = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIME},
+      </if>
+      <if test="applyNo != null" >
+        apply_no = #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transferNo != null" >
+        transfer_no = #{transferNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlHandelDate != null" >
+        zl_handel_date = #{zlHandelDate,jdbcType=DATE},
+      </if>
+      <if test="zlHandleTime != null" >
+        zl_handle_time = #{zlHandleTime,jdbcType=TIME},
+      </if>
+      <if test="zlSerialNo != null" >
+        zl_serial_no = #{zlSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUserId != null" >
+        zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="zlRespCode != null" >
+        zl_resp_code = #{zlRespCode,jdbcType=CHAR},
+      </if>
+      <if test="zlRespMsg != null" >
+        zl_resp_msg = #{zlRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chnId != null" >
+        chn_id = #{chnId,jdbcType=CHAR},
+      </if>
+      <if test="chnCode != null" >
+        chn_code = #{chnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bussFlag != null" >
+        buss_flag = #{bussFlag,jdbcType=CHAR},
+      </if>
+      <if test="bussStatus != null" >
+        buss_status = #{bussStatus,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.api.entity.po.BussSerialRecord" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update buss_serial_record
+    set apply_date = #{applyDate,jdbcType=DATE},
+      apply_time = #{applyTime,jdbcType=TIME},
+      apply_no = #{applyNo,jdbcType=VARCHAR},
+      transfer_no = #{transferNo,jdbcType=VARCHAR},
+      zl_handel_date = #{zlHandelDate,jdbcType=DATE},
+      zl_handle_time = #{zlHandleTime,jdbcType=TIME},
+      zl_serial_no = #{zlSerialNo,jdbcType=VARCHAR},
+      zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      zl_resp_code = #{zlRespCode,jdbcType=CHAR},
+      zl_resp_msg = #{zlRespMsg,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      chn_id = #{chnId,jdbcType=CHAR},
+      chn_code = #{chnCode,jdbcType=VARCHAR},
+      buss_flag = #{bussFlag,jdbcType=CHAR},
+      buss_status = #{bussStatus,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateStateByApplyNo">
+    update buss_serial_record
+    <set>
+      <if test="applyNo != null">
+        apply_no = #{applyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlHandelDate != null">
+        zl_handel_date = #{zlHandelDate,jdbcType=DATE},
+      </if>
+      <if test="zlHandleTime != null">
+        zl_handle_time = #{zlHandleTime,jdbcType=TIME},
+      </if>
+      <if test="zlSerialNo != null">
+        zl_serial_no = #{zlSerialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="zlUserId != null">
+        zl_user_id = #{zlUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="bussStatus != null">
+        buss_status = #{bussStatus,jdbcType=CHAR},
+      </if>
+      <if test="zlRespCode != null" >
+        zl_resp_code = #{zlRespCode,jdbcType=CHAR},
+      </if>
+      <if test="zlRespMsg != null" >
+        zl_resp_msg = #{zlRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="transferNo != null" >
+        transfer_no = #{transferNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where apply_no = #{applyNo}
+  </update>
+</mapper>

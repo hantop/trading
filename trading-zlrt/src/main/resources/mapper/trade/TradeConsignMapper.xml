@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.TradeConsignMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.TradeConsign" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="apply_date" property="applyDate" jdbcType="DATE" />
+    <result column="apply_time" property="applyTime" jdbcType="TIME" />
+    <result column="apply_no" property="applyNo" jdbcType="VARCHAR" />
+    <result column="confirm_date" property="confirmDate" jdbcType="DATE" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="chn_id" property="chnId" jdbcType="CHAR" />
+    <result column="chn_code" property="chnCode" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="buss_code" property="bussCode" jdbcType="VARCHAR" />
+    <result column="consign_status" property="consignStatus" jdbcType="CHAR" />
+    <result column="trans_vol" property="transVol" jdbcType="DECIMAL" />
+    <result column="trans_amount" property="transAmount" jdbcType="DECIMAL" />
+    <result column="trans_fix" property="transFix" jdbcType="DECIMAL" />
+    <result column="take_income_flag" property="takeIncomeFlag" jdbcType="VARCHAR" />
+    <result column="huge_subs_flag" property="hugeSubsFlag" jdbcType="CHAR" />
+    <result column="huge_redem_flag" property="hugeRedeemFlag" jdbcType="CHAR" />
+    <result column="risk_disclosure" property="riskDisclosure" jdbcType="CHAR" />
+    <result column="trans_bank_code" property="transBankCode" jdbcType="VARCHAR" />
+    <result column="trans_bank_act" property="transBankAct" jdbcType="CHAR" />
+    <result column="charge_type" property="chargeType" jdbcType="CHAR" />
+    <result column="charge_way" property="chargeWay" jdbcType="CHAR" />
+    <result column="charge_rate" property="chargeRate" jdbcType="DECIMAL" />
+    <result column="specify_fee" property="specifyFee" jdbcType="DECIMAL" />
+    <result column="rolling_flag" property="rollingFlag" jdbcType="CHAR" />
+    <result column="force_redem_reason" property="forceRedemReason" jdbcType="CHAR" />
+    <result column="force_redem_type" property="forceRedemType" jdbcType="CHAR" />
+    <result column="redeem_flag" property="redeemFlag" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="investor_id" property="investorId" jdbcType="VARCHAR" />
+    <result column="branch_code" property="branchCode" jdbcType="VARCHAR" />
+    <result column="trans_date" property="transDate" jdbcType="VARCHAR" />
+    <result column="trans_time" property="transTime" jdbcType="VARCHAR" />
+    <result column="transfer_no" property="transferNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, apply_date, apply_time, apply_no, confirm_date, name, chn_id, chn_code, product_no, 
+    product_name, buss_code, consign_status, trans_vol, trans_amount, trans_fix, take_income_flag, 
+    huge_subs_flag, huge_redem_flag, risk_disclosure, trans_bank_code, trans_bank_act, 
+    charge_type, charge_way, charge_rate, specify_fee, rolling_flag, force_redem_reason, 
+    force_redem_type, redeem_flag, create_time
+  </sql>
+
+  <select id="selectConfirmTradeList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select t.apply_no,t.product_no,t.huge_redem_flag,DATE_FORMAT(t.apply_date,'%Y%m%d') as trans_date,DATE_FORMAT(t.apply_time,'%H%i%s') as trans_time,
+       t.chn_id,t.chn_code,t.trans_vol,t.trans_amount,t.buss_code,u.investor_id,t.chn_code as branch_code,tft.transfer_no,t.redeem_flag,t.trans_bank_code,t.trans_bank_act
+    from trade_consign t
+    left join user u on t.chn_id = u.chn_id
+    left join trade_fund_transfer tft on t.apply_no = tft.apply_no
+    where t.consign_status = '0' and t.chn_code = #{chnCode}
+    and (concat(DATE_FORMAT(t.apply_date,'%Y%m%d'),DATE_FORMAT(t.apply_time,'%H%i%s')) &gt; concat(#{preDate},'150000'))
+    and (concat(DATE_FORMAT(t.apply_date,'%Y%m%d'),DATE_FORMAT(t.apply_time,'%H%i%s')) &lt;= concat(#{applyDate},'150000'))
+  </select>
+
+  <select id = "selectToHandingTradeList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from trade_consign where consign_status = '0'
+  </select>
+
+
+  <update id="updateconsignStatus">
+     update trade_consign set consign_status = #{flag} where apply_no = #{applyNo}
+  </update>
+</mapper>

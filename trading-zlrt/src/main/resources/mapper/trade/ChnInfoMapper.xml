@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.ChnInfoMapperTrade" >
+  <resultMap id="BaseResultMap" type="com.jinhui.zlrt.entity.domain.ChnInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chn_code" property="chnCode" jdbcType="CHAR" />
+    <result column="chn_name" property="chnName" jdbcType="VARCHAR" />
+    <result column="id_type" property="idType" jdbcType="CHAR" />
+    <result column="id_no" property="idNo" jdbcType="CHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="artificial" property="artificial" jdbcType="VARCHAR" />
+    <result column="adress" property="adress" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="total_limit" property="totalLimit" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, chn_code, chn_name, id_type, id_no, contacts, artificial, adress, phone, total_limit
+  </sql>
+
+  <delete id="delete">
+    delete from chn_info
+  </delete>
+
+  <insert id="saveBatch" parameterType="list"  useGeneratedKeys="true">
+    insert into chn_info(chn_code,chn_name,id_type,id_no,contacts,artificial,adress,phone,total_limit) values
+    <foreach item="item" collection="chnInfoList" separator=",">
+      (#{item.chnCode},#{item.chnName},#{item.idType},#{item.idNo},#{item.contacts},
+      #{item.artificial},#{item.adress},#{item.phone},#{item.totalLimit})
+    </foreach>
+  </insert>
+
+  <select id="selectAllChnInfoList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from chn_info
+  </select>
+</mapper>

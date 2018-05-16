@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.zlrt.mapper.trade.ProductMapperTrade" >
+  <resultMap id="productMap" type="com.jinhui.zlrt.entity.domain.Product" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="CHAR" />
+    <result column="plat_product_no" property="platProductNo" jdbcType="VARCHAR" />
+    <result column="product_issuer" property="productIssuer" jdbcType="VARCHAR" />
+    <result column="exchange_no" property="exchangeNo" jdbcType="CHAR" />
+    <result column="product_type" property="productType" jdbcType="VARCHAR" />
+    <result column="product_expdate" property="productExpdate" jdbcType="DECIMAL" />
+    <result column="expdate_unit" property="expdateUnit" jdbcType="DECIMAL" />
+    <result column="cal_income_way" property="calIncomeWay" jdbcType="CHAR" />
+    <result column="cal_rate_way" property="calRateWay" jdbcType="CHAR" />
+    <result column="setup_date" property="setupDate" jdbcType="DATE" />
+    <result column="rate_date" property="rateDate" jdbcType="DATE" />
+    <result column="term_date" property="termDate" jdbcType="DATE" />
+    <result column="cashe_date" property="casheDate" jdbcType="DATE" />
+    <result column="income_rate" property="incomeRate" jdbcType="DECIMAL" />
+    <result column="percent_income_rate" property="percentIncomeRate" jdbcType="DECIMAL" />
+    <result column="ipo_start_date" property="ipoStartDate" jdbcType="TIMESTAMP" />
+    <result column="ipo_end_date" property="ipoEndDate" jdbcType="TIMESTAMP" />
+    <result column="start_periods" property="startPeriods" jdbcType="DECIMAL" />
+    <result column="end_periods" property="endPeriods" jdbcType="DECIMAL" />
+    <result column="total_limit" property="totalLimit" jdbcType="DECIMAL" />
+    <result column="total_vol" property="totalVol" jdbcType="DECIMAL" />
+    <result column="product_vol" property="productVol" jdbcType="DECIMAL" />
+    <result column="subs_start_amount" property="subsStartAmount" jdbcType="DECIMAL" />
+    <result column="subs_range" property="subsRange" jdbcType="DECIMAL" />
+    <result column="risk_assess" property="riskAssess" jdbcType="CHAR" />
+    <result column="risk_level" property="riskLevel" jdbcType="CHAR" />
+    <result column="product_total_periods" property="productTotalPeriods" jdbcType="INTEGER" />
+    <result column="nominal_income_rate" property="nominalIncomeRate" jdbcType="DECIMAL" />
+    <result column="nominal_percent_income_rate" property="nominalPercentIncomeRate" jdbcType="DECIMAL" />
+    <result column="income_difference" property="incomeDifference" jdbcType="DECIMAL" />
+    <result column="interest_type" property="interestType" jdbcType="VARCHAR" />
+    <result column="product_state" property="productState" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <delete id="deleteProducts">
+    delete from product
+  </delete>
+
+  <insert id="insertProductsBatch" parameterType="list"  useGeneratedKeys="true">
+     insert into product(product_name,product_no,plat_product_no,product_issuer,exchange_no,
+    product_type,product_expdate,expdate_unit,cal_income_way,cal_rate_way,
+    setup_date,rate_date,term_date,cashe_date,income_rate,percent_income_rate,nominal_income_rate,
+    nominal_percent_income_rate,income_difference,ipo_start_date,ipo_end_date,product_total_periods,
+    start_periods,end_periods,total_limit,total_vol,product_vol,subs_start_amount,subs_range,risk_assess,
+    risk_level,interest_type,product_state,create_time,gmt_modified) values
+    <foreach item="item" collection="productList" separator=",">
+      (#{item.productName},#{item.productNo},#{item.platProductNo},#{item.productIssuer},#{item.exchangeNo},
+      #{item.productType},#{item.productExpdate},#{item.expdateUnit},#{item.calIncomeWay},#{item.calRateWay},
+      #{item.setupDate},#{item.rateDate},#{item.termDate},#{item.casheDate},#{item.incomeRate},
+      #{item.percentIncomeRate},#{item.nominalIncomeRate},#{item.nominalPercentIncomeRate},#{item.incomeDifference},#{item.ipoStartDate},
+      #{item.ipoEndDate},#{item.productTotalPeriods},#{item.startPeriods},#{item.endPeriods},#{item.totalLimit},
+      #{item.totalVol},#{item.productVol},#{item.subsStartAmount},#{item.subsRange},#{item.riskAssess},#{item.riskLevel},
+      #{item.interestType},#{item.productState},now(),now())
+    </foreach>
+  </insert>
+</mapper>

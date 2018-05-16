@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinhui.zlrt.mapper.scheduler.ChnProductMapperScheduler">
+  <resultMap id="chnProductMap" type="com.jinhui.zlrt.entity.domain.ChnProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="chn_code" jdbcType="CHAR" property="chnCode" />
+    <result column="product_name" jdbcType="CHAR" property="productName" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="plat_product_no" jdbcType="CHAR" property="platProductNo" />
+    <result column="total_limit" jdbcType="DECIMAL" property="totalLimit" />
+    <result column="assign_limit" jdbcType="DECIMAL" property="assignLimit" />
+    <result column="total_vol" jdbcType="DECIMAL" property="totalVol" />
+    <result column="assign_vol" jdbcType="DECIMAL" property="assignVol" />
+    <result column="limit_control" jdbcType="DECIMAL" property="limitControl" />
+    <result column="income_rate" jdbcType="DECIMAL" property="incomeRate" />
+    <result column="prefer_date" jdbcType="DATE" property="preferDate" />
+    <result column="product_vol" property="productVol" jdbcType="DECIMAL" />
+    <result column="percent_income_rate" property="percentIncomeRate" jdbcType="DECIMAL" />
+    <result column="nominal_percent_income_rate" property="normalPercentIncomeRate" jdbcType="DECIMAL" />
+    <result column="subs_toplimit" property="subsToplimit" jdbcType="DECIMAL" />
+    <result column="redeem_toplimit" property="redeemToplimit" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_name, product_no, income_rate, percent_income_rate, nominal_income_rate,
+    nominal_percent_income_rate, income_difference, subs_toplimit, redeem_toplimit, position_limit,
+    product_subs_toplimit, product_redeem_toplimit, total_limit, assign_limit, prefer_date,chn_code
+</sql>
+
+  <!--查询所有渠道产品 -->
+  <select id="selectAllChnProductList" resultMap="chnProductMap">
+    select
+    <include refid="Base_Column_List" />
+    from chn_product
+  </select>
+
+</mapper>

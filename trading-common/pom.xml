@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>trading-common</artifactId>
+    <packaging>jar</packaging>
+    <description>公共模块</description>
+
+    <parent>
+        <groupId>com.jinhui</groupId>
+        <artifactId>trading</artifactId>
+        <version>${trading-version}</version>
+    </parent>
+
+
+    <dependencies>
+
+        <!--JSR 341校验-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+</project>
